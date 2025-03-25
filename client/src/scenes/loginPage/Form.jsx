@@ -79,12 +79,14 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
+    console.log("values---",values);
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();
+    console.log("login---", loggedIn);
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
